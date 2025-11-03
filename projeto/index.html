@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquecelar - Especialistas em Aquecedores</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="background-effects" id="bgEffects"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <svg class="snowflake-icon" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="2" x2="12" y2="22"/>
+                            <line x1="17" y1="7" x2="7" y2="17"/>
+                            <line x1="7" y1="7" x2="17" y2="17"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <polyline points="15 4 12 2 9 4"/>
+                            <polyline points="15 20 12 22 9 20"/>
+                            <polyline points="20 9 22 12 20 15"/>
+                            <polyline points="4 9 2 12 4 15"/>
+                            <polyline points="19 5 17 7 19 9"/>
+                            <polyline points="5 5 7 7 5 9"/>
+                            <polyline points="19 15 17 17 19 19"/>
+                            <polyline points="5 15 7 17 5 19"/>
+                        </svg>
+                        <div class="snowflake-tips">
+                            <div class="tip-glow tip-top"></div>
+                            <div class="tip-glow tip-right"></div>
+                            <div class="tip-glow tip-bottom"></div>
+                            <div class="tip-glow tip-left"></div>
+                        </div>
+                    </div>
+                    <span>Aquecelar Aquecedores</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#inicio">Início</a>
+                    <a href="#servicos">Serviços</a>
+                    <a href="#catalogo">Produtos</a>
+                    <a href="#depoimentos">Depoimentos</a>
+                    <a href="#contato">Contato</a>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                    <button class="btn-primary" onclick="openBudgetSimulator()">Simular Orçamento</button>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FAQ Button Fixed -->
+    <button class="faq-fixed-btn" id="faqFixedBtn" onclick="toggleFAQ()" aria-label="FAQ">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <span>FAQ</span>
+    </button>
+
+    <!-- FAQ Dropdown -->
+    <div class="faq-dropdown" id="faqDropdown">
+        <div class="container">
+            <div class="faq-content">
+                <h3>Perguntas Frequentes</h3>
+                <div class="faq-items">
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQItem(this)">
+                            <span>Qual o prazo para instalação de um aquecedor?</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>O prazo médio é de 2 a 3 dias úteis após a visita técnica. Em casos de urgência, podemos realizar a instalação em até 24 horas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQItem(this)">
+                            <span>Vocês atendem em finais de semana?</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sim! Atendemos de segunda a sábado. Para emergências, temos atendimento 24 horas, incluindo domingos e feriados.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQItem(this)">
+                            <span>A manutenção preventiva é realmente necessária?</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sim, é fundamental! A manutenção preventiva a cada 6 meses prolonga a vida útil do equipamento, garante eficiência energética e previne acidentes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQItem(this)">
+                            <span>Qual a garantia dos serviços?</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Oferecemos garantia de 90 dias para todos os serviços realizados e 12 meses para instalações novas. Peças substituídas têm garantia do fabricante.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQItem(this)">
+                            <span>Vocês trabalham com todas as marcas?</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Sim! Somos especializados em todas as marcas: Rinnai, Lorenzetti, Bosch, Komeco, Orbis e outras. Nossa equipe é treinada e certificada.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Aquecelar
+                </h1>
+                <p class="hero-subtitle">
+                    <span class="gradient-text">Especialistas</span> em Aquecedores
+                </p>
+                <p class="hero-description">
+                    Criando experiências digitais com paixão e precisão
+                </p>
+                <div class="hero-cta">
+                    <button class="btn-primary btn-large" onclick="openBudgetSimulator()">
+                        Simular Orçamento
+                    </button>
+                    <a href="https://wa.me/5511974032100" class="btn-secondary btn-large" target="_blank">
+                        Vamos Conversar
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="100">0</div>
+                        <div class="stat-label">Projetos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="5">0</div>
+                        <div class="stat-label">Anos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">Clientes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Nossos <span class="gradient-text">Serviços</span></h2>
+                <p class="section-description">Soluções completas para todas as suas necessidades</p>
+            </div>
+            
+            <div class="services-showcase">
+                <!-- Skills Orbit -->
+                <div class="skills-orbit reveal-left">
+                <div class="orbit-center">
+                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="2" x2="12" y2="22"/>
+                        <line x1="17" y1="7" x2="7" y2="17"/>
+                        <line x1="7" y1="7" x2="17" y2="17"/>
+                        <line x1="2" y1="12" x2="22" y2="12"/>
+                        <polyline points="15 4 12 2 9 4"/>
+                        <polyline points="15 20 12 22 9 20"/>
+                        <polyline points="20 9 22 12 20 15"/>
+                        <polyline points="4 9 2 12 4 15"/>
+                        <polyline points="19 5 17 7 19 9"/>
+                        <polyline points="5 5 7 7 5 9"/>
+                        <polyline points="19 15 17 17 19 19"/>
+                        <polyline points="5 15 7 17 5 19"/>
+                    </svg>
+                </div>
+                <div class="orbit-ring"></div>
+                <div class="orbit-item" data-skill="instalacao" style="--angle: 0deg;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    </svg>
+                    <span>Instalação</span>
+                </div>
+                <div class="orbit-item" data-skill="manutencao" style="--angle: 72deg;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                    <span>Manutenção</span>
+                </div>
+                <div class="orbit-item" data-skill="conserto" style="--angle: 144deg;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span>Conserto</span>
+                </div>
+                <div class="orbit-item" data-skill="venda" style="--angle: 216deg;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                    </svg>
+                    <span>Venda</span>
+                </div>
+                <div class="orbit-item" data-skill="emergencia" style="--angle: 288deg;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
+                    </svg>
+                    <span>Emergência</span>
+                </div>
+                </div>
+                
+                <!-- Service Details -->
+                <div class="service-details">
+                    <div class="service-detail-card reveal-right">
+                        <h3>Excelência em Aquecimento</h3>
+                        <p>Sistemas modernos de aquecimento, instalação profissional e manutenção preventiva de alta qualidade</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="--progress-width: 95%; --progress-delay: 1.2s"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-detail-card reveal-right">
+                        <h3>Assistência Completa</h3>
+                        <p>Desenvolvimento de soluções personalizadas desde diagnóstico até instalação final</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="--progress-width: 98%; --progress-delay: 0.3s"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-detail-card reveal-right">
+                        <h3>Qualidade & Garantia</h3>
+                        <p>Atendimento rápido e experiências perfeitas em todos os dispositivos e situações</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="--progress-width: 92%; --progress-delay: 0.7s"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Instalação</h3>
+                    <p class="service-description">Instalação profissional de aquecedores a gás e elétricos. Garantia de segurança e eficiência.</p>
+                    <ul class="service-features">
+                        <li>Análise do local</li>
+                        <li>Instalação certificada</li>
+                        <li>Testes de segurança</li>
+                        <li>Garantia de 12 meses</li>
+                    </ul>
+                </div>
+                <div class="service-card featured reveal">
+                    <div class="featured-badge">Mais Procurado</div>
+                    <div class="service-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Manutenção</h3>
+                    <p class="service-description">Manutenção preventiva e corretiva. Evite problemas e prolongue a vida útil do seu equipamento.</p>
+                    <ul class="service-features">
+                        <li>Limpeza completa</li>
+                        <li>Troca de peças</li>
+                        <li>Regulagem e testes</li>
+                        <li>Relatório técnico</li>
+                    </ul>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Conserto</h3>
+                    <p class="service-description">Diagnóstico preciso e conserto rápido. Atendemos todas as marcas e modelos.</p>
+                    <ul class="service-features">
+                        <li>Diagnóstico gratuito</li>
+                        <li>Peças originais</li>
+                        <li>Atendimento 24h</li>
+                        <li>Garantia do serviço</li>
+                    </ul>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Venda</h3>
+                    <p class="service-description">Aquecedores novos das melhores marcas. Preços competitivos e condições especiais.</p>
+                    <ul class="service-features">
+                        <li>Todas as marcas</li>
+                        <li>Garantia de fábrica</li>
+                        <li>Parcelamento</li>
+                        <li>Instalação inclusa</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section id="catalogo" class="catalog">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Nosso <span class="gradient-text">Trabalho</span></h2>
+                <p class="section-description">Aquecedores de alta qualidade para todas as necessidades</p>
+            </div>
+            <div class="catalog-grid">
+                <div class="catalog-item reveal-scale">
+                    <div class="catalog-image">
+                        <img src="imagens/24ab08ea-1997-41ce-9f8d-63b11839156e.jpeg" alt="Instalação Profissional">
+                        <div class="catalog-badge">Destaque</div>
+                    </div>
+                    <div class="catalog-content">
+                        <h3 class="catalog-title">Instalação Profissional</h3>
+                        <p class="catalog-description">Nossos técnicos especializados garantem instalações seguras e eficientes, seguindo todas as normas técnicas.</p>
+                        <button class="btn-catalog" onclick="openBudgetSimulator()">Simular Orçamento</button>
+                    </div>
+                </div>
+                
+                <div class="catalog-item reveal-scale">
+                    <div class="catalog-image">
+                        <img src="imagens/613fe944-d6b2-4871-9f8b-1fd50615791f.jpeg" alt="Manutenção Preventiva">
+                        <div class="catalog-badge cyan">Qualidade</div>
+                    </div>
+                    <div class="catalog-content">
+                        <h3 class="catalog-title">Manutenção Preventiva</h3>
+                        <p class="catalog-description">Realizamos manutenções periódicas para garantir o funcionamento perfeito e prolongar a vida útil do seu equipamento.</p>
+                        <button class="btn-catalog" onclick="openBudgetSimulator()">Simular Orçamento</button>
+                    </div>
+                </div>
+                
+                <div class="catalog-item reveal-scale">
+                    <div class="catalog-image">
+                        <img src="imagens/75e81e2c-87a9-4974-9ac1-85c1a52549b1.jpeg" alt="Trabalho de Excelência">
+                        <div class="catalog-badge">Profissional</div>
+                    </div>
+                    <div class="catalog-content">
+                        <h3 class="catalog-title">Trabalho de Excelência</h3>
+                        <p class="catalog-description">Cada projeto é executado com máxima atenção aos detalhes, garantindo resultados que superam expectativas.</p>
+                        <button class="btn-catalog" onclick="openBudgetSimulator()">Simular Orçamento</button>
+                    </div>
+                </div>
+                
+                <div class="catalog-item reveal-scale">
+                    <div class="catalog-image">
+                        <img src="imagens/IMG_2984.jpeg" alt="Equipamentos Modernos">
+                    </div>
+                    <div class="catalog-content">
+                        <h3 class="catalog-title">Equipamentos Modernos</h3>
+                        <p class="catalog-description">Utilizamos ferramentas e equipamentos de última geração para garantir serviços rápidos e precisos.</p>
+                        <button class="btn-catalog" onclick="openBudgetSimulator()">Simular Orçamento</button>
+                    </div>
+                </div>
+                
+                <div class="catalog-item reveal-scale">
+                    <div class="catalog-image">
+                        <img src="imagens/a65f6aed-dccd-4acf-baec-4f201df486f8.jpeg" alt="Atendimento Personalizado">
+                        <div class="catalog-badge">Diferencial</div>
+                    </div>
+                    <div class="catalog-content">
+                        <h3 class="catalog-title">Atendimento Personalizado</h3>
+                        <p class="catalog-description">Cada cliente recebe soluções customizadas, adaptadas às suas necessidades específicas e orçamento.</p>
+                        <button class="btn-catalog" onclick="openBudgetSimulator()">Simular Orçamento</button>
+                    </div>
+                </div>
+                
+                <div class="catalog-item reveal-scale">
+                    <div class="catalog-image">
+                        <img src="imagens/b251da10-28e1-47a3-b170-2eb68561b4dd.jpeg" alt="Compromisso com Qualidade">
+                        <div class="catalog-badge cyan">Garantia</div>
+                    </div>
+                    <div class="catalog-content">
+                        <h3 class="catalog-title">Compromisso com Qualidade</h3>
+                        <p class="catalog-description">Nossa reputação é construída sobre anos de trabalho impecável e clientes 100% satisfeitos.</p>
+                        <button class="btn-catalog" onclick="openBudgetSimulator()">Simular Orçamento</button>
+                    </div>
+                </div>
+                
+                <div class="catalog-item reveal-scale">
+                    <div class="catalog-image">
+                        <img src="imagens/b54e2f9b-0bb2-47ca-9327-274a70b31006.jpeg" alt="Experiência Comprovada">
+                        <div class="catalog-badge">Confiança</div>
+                    </div>
+                    <div class="catalog-content">
+                        <h3 class="catalog-title">Experiência Comprovada</h3>
+                        <p class="catalog-description">Anos de experiência no mercado nos tornam referência em instalação e manutenção de aquecedores.</p>
+                        <button class="btn-catalog" onclick="openBudgetSimulator()">Simular Orçamento</button>
+                    </div>
+                </div>
+                
+                <div class="catalog-item reveal-scale">
+                    <div class="catalog-image">
+                        <img src="imagens/bf2820fb-f9c5-46e8-b6a7-e67ccd2326d0.jpeg" alt="Resultados Garantidos">
+                        <div class="catalog-badge">Excelência</div>
+                    </div>
+                    <div class="catalog-content">
+                        <h3 class="catalog-title">Resultados Garantidos</h3>
+                        <p class="catalog-description">Oferecemos garantia em todos os nossos serviços, demonstrando confiança na qualidade do nosso trabalho.</p>
+                        <button class="btn-catalog" onclick="openBudgetSimulator()">Simular Orçamento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="depoimentos" class="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">O Que Dizem <span class="gradient-text">Nossos Clientes</span></h2>
+                <p class="section-description">Depoimentos reais de quem confia no nosso trabalho</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal-left">
+                    <div class="testimonial-rating">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"Excelente atendimento! Resolveram meu problema com o aquecedor a gás em menos de 2 horas. Muito profissionais e preço justo."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div>
+                            <div class="author-name">Maria Silva</div>
+                            <div class="author-title">Cliente Residencial</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-rating">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"Compramos um boiler novo e a instalação foi impecável. Equipe pontual, limpa e muito educada. Super recomendo!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">J</div>
+                        <div>
+                            <div class="author-name">João Santos</div>
+                            <div class="author-title">Cliente Residencial</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal-right">
+                    <div class="testimonial-rating">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <p class="testimonial-text">"Atendimento de emergência no fim de semana. Chegaram rápido e resolveram o problema. Empresa de confiança!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div>
+                            <div class="author-name">Paula Oliveira</div>
+                            <div class="author-title">Cliente Comercial</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info reveal-left">
+                    <h2 class="section-title">Entre em <span class="gradient-text">Contato</span></h2>
+                    <p class="contact-description">Estamos prontos para atender você. Fale conosco agora!</p>
+                    <div class="contact-methods">
+                        <a href="https://wa.me/5511974032100" class="contact-method" target="_blank">
+                            <div class="method-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="method-label">WhatsApp</div>
+                                <div class="method-value">(11) 97403-2100</div>
+                            </div>
+                        </a>
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="method-label">Telefone</div>
+                                <div class="method-value">(11) 97403-2100</div>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="method-label">Horário</div>
+                                <div class="method-value">24 horas / 7 dias</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-cta reveal-right">
+                    <div class="cta-card">
+                        <h3>Atendimento de Emergência</h3>
+                        <p>Problemas urgentes? Entre em contato agora e receba atendimento prioritário!</p>
+                        <a href="https://wa.me/5511974032100?text=Olá! Preciso de atendimento de emergência." class="btn-primary btn-large" target="_blank">
+                            Emergência WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                        <span>Aquecelar Aquecedores</span>
+                    </div>
+                    <p class="footer-description">Especialistas em aquecedores a gás e elétricos. Qualidade, confiança e excelência no atendimento.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Serviços</h4>
+                        <a href="#servicos">Instalação</a>
+                        <a href="#servicos">Manutenção</a>
+                        <a href="#servicos">Conserto</a>
+                        <a href="#catalogo">Venda</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Produtos</h4>
+                        <a href="#catalogo">Aquecedores a Gás</a>
+                        <a href="#catalogo">Aquecedores Elétricos</a>
+                        <a href="#catalogo">Boilers</a>
+                        <a href="#catalogo">Peças</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contato</h4>
+                        <a href="https://wa.me/5511974032100" target="_blank">WhatsApp</a>
+                        <a href="tel:+5511974032100">Telefone</a>
+                        <a href="#" onclick="openBudgetSimulator(); return false;">Orçamento</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pedro Gomes. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Budget Simulator Modal -->
+    <div id="budgetModal" class="modal">
+        <div class="modal-overlay" onclick="closeBudgetSimulator()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeBudgetSimulator()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            
+            <!-- Step 1: Service Selection -->
+            <div id="step1" class="modal-step active">
+                <h2 class="modal-title">Selecione o <span class="gradient-text">Serviço</span></h2>
+                <p class="modal-description">Escolha o tipo de serviço que você precisa</p>
+                <div class="service-options">
+                    <button class="service-option" onclick="selectService('Instalação de Aquecedor a Gás')">
+                        <div class="option-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <h3>Aquecedor a Gás</h3>
+                        <p>Instalação, manutenção ou conserto</p>
+                    </button>
+                    <button class="service-option" onclick="selectService('Instalação de Aquecedor Elétrico')">
+                        <div class="option-icon cyan">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                <polyline points="17 6 23 6 23 12"/>
+                            </svg>
+                        </div>
+                        <h3>Aquecedor Elétrico</h3>
+                        <p>Instalação, manutenção ou conserto</p>
+                    </button>
+                    <button class="service-option" onclick="selectService('Instalação de Boiler')">
+                        <div class="option-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                        </div>
+                        <h3>Boiler</h3>
+                        <p>Horizontal ou vertical</p>
+                    </button>
+                    <button class="service-option" onclick="selectService('Manutenção Preventiva')">
+                        <div class="option-icon cyan">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <h3>Manutenção</h3>
+                        <p>Preventiva ou corretiva</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Form -->
+            <div id="step2" class="modal-step">
+                <button class="back-button" onclick="goToStep(1)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                    Voltar
+                </button>
+                <h2 class="modal-title">Preencha os <span class="gradient-text">Dados</span></h2>
+                <p class="modal-description">Precisamos de algumas informações para calcular o orçamento</p>
+                <form id="budgetForm" class="budget-form">
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" name="name" required placeholder="Digite seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="(11) 99999-9999">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Endereço</label>
+                        <input type="text" id="address" name="address" required placeholder="Rua, número, bairro, cidade">
+                    </div>
+                    <div class="form-group">
+                        <label for="brand">Marca do Equipamento (se aplicável)</label>
+                        <input type="text" id="brand" name="brand" placeholder="Ex: Rinnai, Lorenzetti, Bosch...">
+                    </div>
+                    <div class="form-group">
+                        <label for="problem">Descreva sua necessidade</label>
+                        <textarea id="problem" name="problem" rows="4" required placeholder="Descreva o problema ou serviço que você precisa..."></textarea>
+                    </div>
+                    <button type="button" class="btn-primary btn-large" onclick="goToStep(3)">Continuar</button>
+                </form>
+            </div>
+
+            <!-- Step 3: Review and Send -->
+            <div id="step3" class="modal-step">
+                <button class="back-button" onclick="goToStep(2)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                    Voltar
+                </button>
+                <h2 class="modal-title">Revisar <span class="gradient-text">Informações</span></h2>
+                <p class="modal-description">Confira os dados antes de enviar</p>
+                <div id="reviewContent" class="review-content"></div>
+                <button class="btn-primary btn-large" onclick="sendToWhatsApp()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                    Enviar para WhatsApp
+                </button>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="progress-indicator">
+                <div class="progress-step" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Serviço</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Dados</div>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Enviar</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Menu -->
+    <div class="floating-menu" id="floatingMenu">
+        <!-- Menu Items (hidden by default) -->
+        <button class="floating-menu-item" id="scrollToTopBtn" aria-label="Voltar ao topo" style="opacity: 0; visibility: hidden;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="18 15 12 9 6 15"/>
+            </svg>
+        </button>
+        
+        <a href="https://wa.me/5511974032100" class="floating-menu-item" target="_blank" aria-label="Contato via WhatsApp" style="opacity: 0; visibility: hidden;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+        </a>
+
+        <!-- Main Toggle Button -->
+        <button class="floating-menu-toggle" id="menuToggle" aria-label="Menu de ações">
+            <svg class="icon-plus" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+            <svg class="icon-close" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display: none;">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
