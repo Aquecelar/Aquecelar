@@ -597,6 +597,8 @@ main, section, nav, footer {
     border: none;
     cursor: pointer;
     padding: 0.5rem;
+    position: relative;
+    z-index: 1000;
 }
 
 .mobile-menu-toggle span {
@@ -604,6 +606,19 @@ main, section, nav, footer {
     height: 2px;
     background: var(--color-text-primary);
     transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 /* FAQ Fixed Button */
@@ -2429,7 +2444,41 @@ body:not(.light-theme) .testimonials .section-description {
 
 @media (max-width: 768px) {
     .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid var(--border-color);
         display: none;
+        z-index: 999;
+        animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .nav-links a {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 1.1rem;
+    }
+    
+    .nav-links .btn-primary {
+        width: 100%;
+        justify-content: center;
     }
     
     .mobile-menu-toggle {
@@ -2438,19 +2487,37 @@ body:not(.light-theme) .testimonials .section-description {
     
     .hero {
         padding-top: 5rem;
+        padding-bottom: 4rem;
+    }
+    
+    .hero-title {
+        font-size: 2.25rem;
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
     }
     
     .hero-cta {
         flex-direction: column;
         width: 100%;
+        gap: 1rem;
     }
     
     .hero-cta .btn-large {
         width: 100%;
+        justify-content: center;
     }
     
     .hero-stats {
+        grid-template-columns: 1fr;
         gap: 2rem;
+        text-align: center;
+    }
+    
+    .stat-card {
+        padding: 1.5rem;
     }
     
     .services-showcase {
@@ -2459,44 +2526,44 @@ body:not(.light-theme) .testimonials .section-description {
     }
     
     .skills-orbit {
-        width: 350px;
-        height: 350px;
-        margin: 3rem auto;
+        width: 300px;
+        height: 300px;
+        margin: 2rem auto;
     }
     
     .orbit-center {
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: 90px;
     }
     
     .orbit-center svg {
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
     }
     
     .orbit-item {
-        width: 70px;
-        height: 70px;
-        margin-left: -35px;
-        margin-top: -35px;
-        transform-origin: 175px 175px;
+        width: 65px;
+        height: 65px;
+        margin-left: -32.5px;
+        margin-top: -32.5px;
+        transform-origin: 150px 150px;
     }
     
     .orbit-item svg {
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
     }
     
     .orbit-item span {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
     }
     
     @keyframes orbit-rotate {
         from {
-            transform: rotate(0deg) translateX(140px) rotate(0deg);
+            transform: rotate(0deg) translateX(120px) rotate(0deg);
         }
         to {
-            transform: rotate(360deg) translateX(140px) rotate(-360deg);
+            transform: rotate(360deg) translateX(120px) rotate(-360deg);
         }
     }
     
@@ -2504,10 +2571,29 @@ body:not(.light-theme) .testimonials .section-description {
         grid-template-columns: 1fr;
     }
     
+    .service-option {
+        padding: 1.5rem;
+    }
+    
     .services-grid,
     .catalog-grid,
     .testimonials-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card,
+    .catalog-item,
+    .testimonial-card {
+        margin: 0;
+    }
+    
+    .section {
+        padding: 3rem 0;
+    }
+    
+    .section-header {
+        margin-bottom: 2rem;
     }
     
     .footer-links {
@@ -2516,6 +2602,9 @@ body:not(.light-theme) .testimonials .section-description {
     
     .modal-content {
         padding: 2rem 1.5rem;
+        margin: 1rem;
+        max-height: 90vh;
+        overflow-y: auto;
     }
     
     .progress-indicator {
@@ -2528,6 +2617,16 @@ body:not(.light-theme) .testimonials .section-description {
         height: 30px;
         margin: 0;
     }
+    
+    .faq-fixed-btn {
+        bottom: 5rem;
+        right: 1rem;
+        padding: 0.75rem 1rem;
+    }
+    
+    .faq-fixed-btn span {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2535,12 +2634,26 @@ body:not(.light-theme) .testimonials .section-description {
         padding: 0 1rem;
     }
     
+    .hero {
+        padding-top: 4rem;
+        padding-bottom: 3rem;
+    }
+    
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
+        line-height: 1.3;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
     }
     
     .section-title {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.95rem;
     }
     
     .btn-large {
@@ -2548,26 +2661,114 @@ body:not(.light-theme) .testimonials .section-description {
         font-size: 0.95rem;
     }
     
+    .btn-primary {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+    }
+    
+    .logo span {
+        font-size: 1rem;
+    }
+    
+    .logo-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .skills-orbit {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .orbit-center {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .orbit-center svg {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .orbit-item {
+        width: 55px;
+        height: 55px;
+        margin-left: -27.5px;
+        margin-top: -27.5px;
+        transform-origin: 125px 125px;
+    }
+    
+    .orbit-item svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .orbit-item span {
+        font-size: 0.55rem;
+    }
+    
+    @keyframes orbit-rotate {
+        from {
+            transform: rotate(0deg) translateX(95px) rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg) translateX(95px) rotate(-360deg);
+        }
+    }
+    
+    .service-card,
+    .catalog-item {
+        padding: 1.25rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.85rem;
+    }
+    
     .floating-menu {
         bottom: 1.5rem;
-        right: 1.5rem;
+        right: 1rem;
     }
     
     .floating-menu-toggle {
-        width: 55px;
-        height: 55px;
+        width: 50px;
+        height: 50px;
     }
     
     .floating-menu-item {
-        width: 45px;
-        height: 45px;
+        width: 42px;
+        height: 42px;
     }
     
     .floating-menu.active .floating-menu-item:nth-child(1) {
-        bottom: 130px;
+        bottom: 120px;
     }
     
     .floating-menu.active .floating-menu-item:nth-child(2) {
-        bottom: 75px;
+        bottom: 70px;
+    }
+    
+    .modal-content {
+        padding: 1.5rem 1rem;
+        margin: 0.5rem;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.25rem;
+    }
+    
+    .form-group label {
+        font-size: 0.9rem;
+    }
+    
+    .form-input,
+    .form-select,
+    .form-textarea {
+        font-size: 0.95rem;
+        padding: 0.75rem;
     }
 }

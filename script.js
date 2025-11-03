@@ -382,8 +382,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Mobile Menu Toggle
 function toggleMobileMenu() {
     const navLinks = document.querySelector('.nav-links');
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    const menuToggle = document.querySelector('.mobile-menu-toggle');
+    
+    if (navLinks.style.display === 'flex') {
+        navLinks.style.display = 'none';
+        menuToggle.classList.remove('active');
+    } else {
+        navLinks.style.display = 'flex';
+        menuToggle.classList.add('active');
+    }
 }
+
+// Fechar menu mobile ao clicar em um link
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const navLinksContainer = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            if (window.innerWidth <= 768) {
+                navLinksContainer.style.display = 'none';
+                menuToggle.classList.remove('active');
+            }
+        });
+    });
+});
 
 // Scroll Animation Observer
 const observerOptions = {
