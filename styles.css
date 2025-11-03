@@ -4,6 +4,21 @@
     box-sizing: border-box;
 }
 
+/* Hide inner scrollbars (keep page scrollbar) */
+*:not(html):not(body)::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+}
+*:not(html):not(body) {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+html {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
 :root {
     --color-bg-primary: #1a1f3a;
     --color-bg-secondary: #232946;
@@ -144,8 +159,11 @@ body {
     color: var(--color-text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    max-width: 100vw;
     scroll-behavior: smooth;
     position: relative;
+    margin: 0;
+    padding: 0;
 }
 
 /* Background Effects Container */
@@ -352,14 +370,13 @@ body {
 }
 
 
-html {
-    scroll-behavior: smooth;
-}
 
 .container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 /* Main Content Layer */
@@ -397,7 +414,7 @@ main, section, nav, footer {
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     font-size: 1.5rem;
     font-weight: 800;
     text-decoration: none;
@@ -417,8 +434,9 @@ main, section, nav, footer {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: logo-shine 15s linear infinite;
-    filter: drop-shadow(0 0 10px rgba(124, 159, 245, 0.8));
+    filter: drop-shadow(0 0 5px rgba(124, 159, 245, 0.4));
     position: relative;
+    white-space: nowrap;
 }
 
 @keyframes logo-shine {
@@ -440,15 +458,17 @@ main, section, nav, footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
 /* Snowflake Icon */
 .snowflake-icon {
     color: var(--color-accent-primary);
-    filter: drop-shadow(0 0 8px rgba(124, 159, 245, 0.8)) 
-            drop-shadow(0 0 15px rgba(124, 159, 245, 0.6))
-            drop-shadow(0 0 25px rgba(124, 159, 245, 0.4));
-    animation: snowflake-spin 8s linear infinite, snowflake-glow 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 4px rgba(124, 159, 245, 0.6)) 
+            drop-shadow(0 0 8px rgba(124, 159, 245, 0.4));
+    animation: snowflake-spin 8s linear infinite;
 }
 
 @keyframes snowflake-spin {
@@ -460,43 +480,14 @@ main, section, nav, footer {
     }
 }
 
-@keyframes snowflake-glow {
-    0%, 100% {
-        filter: drop-shadow(0 0 8px rgba(124, 159, 245, 0.8)) 
-                drop-shadow(0 0 15px rgba(124, 159, 245, 0.6))
-                drop-shadow(0 0 25px rgba(124, 159, 245, 0.4));
-    }
-    50% {
-        filter: drop-shadow(0 0 12px rgba(255, 255, 255, 1)) 
-                drop-shadow(0 0 25px rgba(124, 159, 245, 1))
-                drop-shadow(0 0 40px rgba(124, 159, 245, 0.8));
-    }
-}
 
 /* Snowflake Tips Glow */
 .snowflake-tips {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
+    display: none;
 }
 
 .tip-glow {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: radial-gradient(circle, 
-        rgba(255, 255, 255, 1) 0%, 
-        rgba(124, 159, 245, 1) 50%, 
-        transparent 100%);
-    border-radius: 50%;
-    box-shadow: 
-        0 0 6px rgba(255, 255, 255, 1),
-        0 0 12px rgba(124, 159, 245, 1),
-        0 0 20px rgba(124, 159, 245, 0.8);
-    animation: tip-pulse 1.5s ease-in-out infinite;
+    display: none;
 }
 
 .tip-top {
@@ -550,6 +541,12 @@ main, section, nav, footer {
     display: flex;
     align-items: center;
     gap: 2rem;
+}
+
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex !important;
+    }
 }
 
 .nav-links a {
@@ -646,8 +643,8 @@ main, section, nav, footer {
 
 .faq-fixed-btn:hover {
     border-color: var(--color-accent-primary);
-    background: rgba(15, 15, 35, 0.95);
-    transform: translateY(2px);
+    background: var(--color-bg-tertiary);
+    transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(124, 159, 245, 0.4);
 }
 
@@ -704,7 +701,7 @@ main, section, nav, footer {
     overflow: hidden;
     transition: max-height 0.3s ease, opacity 0.2s ease;
     opacity: 0;
-    z-index: 999;
+    z-index: 1001;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(20px);
 }
@@ -923,16 +920,10 @@ box-shadow: 0 10px 30px rgba(124, 159, 245, 0.3);
 
 /* Hero Section */
 .hero {
-min-height: 100vh;
-display: flex;
-align-items: center;
-padding-top: 6rem;
-padding-bottom: 4rem;
-position: relative;
-overflow: hidden;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 6rem;
+    padding-top: 8rem;
     padding-bottom: 4rem;
     position: relative;
     overflow: hidden;
@@ -1479,8 +1470,20 @@ body:not(.light-theme) .testimonials .section-description {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .service-card {
@@ -1579,8 +1582,20 @@ body:not(.light-theme) .testimonials .section-description {
 /* Catalog Section */
 .catalog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+    .catalog-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .catalog-item {
@@ -2026,7 +2041,7 @@ body:not(.light-theme) .testimonials .section-description {
 
 .service-option {
     background: var(--color-bg-tertiary);
-    border: 2px solid var(--color-border);
+    border: none;
     border-radius: 1rem;
     padding: 2rem 1.5rem;
     cursor: pointer;
@@ -2035,7 +2050,6 @@ body:not(.light-theme) .testimonials .section-description {
 }
 
 .service-option:hover {
-    border-color: var(--color-accent-primary);
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(108, 99, 255, 0.3);
 }
@@ -2060,13 +2074,13 @@ body:not(.light-theme) .testimonials .section-description {
 .option-icon::before {
     content: '';
     position: absolute;
-    inset: -2px;
+    inset: -20px;
     background: var(--gradient-primary);
-    border-radius: 1.5rem;
+    border-radius: 50%;
     opacity: 0;
     transition: opacity 0.4s ease;
     z-index: -1;
-    filter: blur(10px);
+    filter: blur(30px);
 }
 
 .option-icon svg {
@@ -2087,8 +2101,9 @@ body:not(.light-theme) .testimonials .section-description {
     background: radial-gradient(circle, rgba(124, 159, 245, 0.4) 0%, rgba(124, 159, 245, 0.1) 100%);
     transform: scale(1.15) rotate(5deg);
     box-shadow: 
-        0 0 30px rgba(124, 159, 245, 0.6),
-        0 0 50px rgba(124, 159, 245, 0.4),
+        0 0 40px rgba(124, 159, 245, 0.8),
+        0 0 80px rgba(124, 159, 245, 0.6),
+        0 0 120px rgba(124, 159, 245, 0.4),
         inset 0 0 30px rgba(124, 159, 245, 0.2);
 }
 
@@ -2268,7 +2283,7 @@ body:not(.light-theme) .testimonials .section-description {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    z-index: 999;
+    z-index: 1000;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -2321,18 +2336,18 @@ body:not(.light-theme) .testimonials .section-description {
     width: 50px;
     height: 50px;
     background: var(--color-bg-secondary);
-    border: 2px solid var(--color-border);
+    border: 1px solid var(--color-border);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    text-decoration: none;
     position: absolute;
     bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .floating-menu-item svg {
@@ -2363,12 +2378,16 @@ body:not(.light-theme) .testimonials .section-description {
     bottom: 150px;
     opacity: 1 !important;
     visibility: visible !important;
+    pointer-events: auto;
+    display: flex !important;
 }
 
 .floating-menu.active .floating-menu-item:nth-child(2) {
     bottom: 85px;
     opacity: 1 !important;
     visibility: visible !important;
+    pointer-events: auto;
+    display: flex !important;
 }
 
 @keyframes pulse {
@@ -2443,20 +2462,34 @@ body:not(.light-theme) .testimonials .section-description {
 }
 
 @media (max-width: 768px) {
+    body, html {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+        position: relative;
+    }
+    
+    .container {
+        padding: 0 1rem;
+        max-width: 100%;
+    }
+    
     .nav-links {
         position: fixed;
-        top: 70px;
+        top: 65px;
         left: 0;
         right: 0;
-        background: var(--bg-primary);
+        background: rgba(15, 15, 35, 0.98);
+        backdrop-filter: blur(20px);
         flex-direction: column;
-        padding: 2rem;
-        gap: 1.5rem;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        border-bottom: 1px solid var(--border-color);
+        padding: 1.5rem;
+        gap: 1rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        border-bottom: 1px solid var(--color-border);
         display: none;
         z-index: 999;
         animation: slideDown 0.3s ease;
+        max-height: calc(100vh - 65px);
+        overflow-y: auto;
     }
     
     @keyframes slideDown {
@@ -2485,8 +2518,17 @@ body:not(.light-theme) .testimonials .section-description {
         display: flex;
     }
     
+    .navbar {
+        padding: 1rem 0;
+    }
+    
+    .logo span {
+        font-size: 1.1rem;
+    }
+    
     .hero {
-        padding-top: 5rem;
+        min-height: auto;
+        padding-top: 9rem;
         padding-bottom: 4rem;
     }
     
@@ -2511,15 +2553,23 @@ body:not(.light-theme) .testimonials .section-description {
     }
     
     .hero-stats {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
         width: 100%;
     }
     
     .stat-item {
-        width: 100%;
-        padding: 1.5rem;
+        padding: 1rem 0.5rem;
+        min-width: auto;
+    }
+    
+    .stat-number {
+        font-size: 1.75rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
     }
     
     .services-showcase {
@@ -2577,6 +2627,19 @@ body:not(.light-theme) .testimonials .section-description {
         padding: 1.5rem;
     }
     
+    .service-option h3 {
+        font-size: 1.5rem;
+    }
+    
+    .service-option p {
+        font-size: 0.95rem;
+    }
+    
+    .service-option ul li {
+        font-size: 0.9rem;
+        padding: 0.5rem 0;
+    }
+    
     .services-grid,
     .catalog-grid,
     .testimonials-grid {
@@ -2588,6 +2651,7 @@ body:not(.light-theme) .testimonials .section-description {
     .catalog-item,
     .testimonial-card {
         margin: 0;
+        padding: 1.5rem;
     }
     
     .section {
@@ -2605,29 +2669,98 @@ body:not(.light-theme) .testimonials .section-description {
     .modal-content {
         padding: 2rem 1.5rem;
         margin: 1rem;
-        max-height: 90vh;
+        max-height: 85vh;
         overflow-y: auto;
+        max-width: calc(100vw - 2rem);
+        border-radius: 1rem;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.25rem;
     }
     
     .progress-indicator {
-        flex-direction: column;
+        flex-direction: row;
         gap: 1rem;
+        flex-wrap: nowrap;
     }
     
     .progress-line {
-        width: 2px;
-        height: 30px;
+        width: 40px;
+        height: 2px;
         margin: 0;
     }
     
+    .progress-step {
+        flex-shrink: 0;
+    }
+    
     .faq-fixed-btn {
-        bottom: 5rem;
-        right: 1rem;
-        padding: 0.75rem 1rem;
+        top: auto !important;
+        bottom: 1.5rem !important;
+        right: 1rem !important;
+        width: 50px !important;
+        height: 50px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+        justify-content: center;
+        z-index: 998 !important;
+        display: flex !important;
+        background: var(--color-bg-secondary) !important;
+        border: 1px solid var(--color-border) !important;
     }
     
     .faq-fixed-btn span {
-        display: none;
+        display: none !important;
+    }
+    
+    .faq-fixed-btn svg {
+        margin: 0;
+    }
+    
+    .floating-menu {
+        right: 1rem;
+        bottom: 8rem;
+        z-index: 999;
+    }
+    
+    .floating-menu-toggle {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .floating-menu-item {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .floating-menu.active .floating-menu-item:nth-child(1) {
+        bottom: 130px;
+    }
+    
+    .floating-menu.active .floating-menu-item:nth-child(2) {
+        bottom: 75px;
+    }
+    
+    .floating-menu.active ~ .faq-fixed-btn {
+        bottom: 1.5rem;
+    }
+    
+    .faq-dropdown {
+        top: auto;
+        bottom: 6rem;
+        right: 0.5rem;
+        left: 0.5rem;
+        max-width: calc(100vw - 1rem);
+        padding: 1.5rem;
+    }
+    
+    .faq-dropdown.active {
+        max-height: 60vh;
     }
 }
 
@@ -2637,7 +2770,8 @@ body:not(.light-theme) .testimonials .section-description {
     }
     
     .hero {
-        padding-top: 4rem;
+        min-height: auto;
+        padding-top: 7rem;
         padding-bottom: 3rem;
     }
     
@@ -2668,13 +2802,26 @@ body:not(.light-theme) .testimonials .section-description {
         font-size: 0.9rem;
     }
     
+    .logo {
+        gap: 0.75rem;
+    }
+    
     .logo span {
         font-size: 1rem;
     }
     
     .logo-icon {
-        width: 35px;
-        height: 35px;
+        width: 32px;
+        height: 32px;
+    }
+    
+    .snowflake-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .tip-glow {
+        display: none;
     }
     
     .skills-orbit {
@@ -2718,17 +2865,44 @@ body:not(.light-theme) .testimonials .section-description {
         }
     }
     
+    .services-grid,
+    .catalog-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+    
     .service-card,
-    .catalog-item {
+    .catalog-item,
+    .testimonial-card {
         padding: 1.25rem;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .section {
+        overflow-x: hidden;
+    }
+    
+    .hero, .services, .catalog, .testimonials, .contact, footer {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+    
+    .hero-stats {
+        gap: 0.5rem;
+    }
+    
+    .stat-item {
+        padding: 0.75rem 0.25rem;
     }
     
     .stat-number {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
     
     .stat-label {
-        font-size: 0.85rem;
+        font-size: 0.7rem;
     }
     
     .floating-menu {
@@ -2757,10 +2931,23 @@ body:not(.light-theme) .testimonials .section-description {
     .modal-content {
         padding: 1.5rem 1rem;
         margin: 0.5rem;
+        max-width: calc(100vw - 1rem);
+        border-radius: 0.75rem;
+    }
+    
+    .modal-header {
+        margin-bottom: 1.5rem;
     }
     
     .modal-header h2 {
         font-size: 1.25rem;
+    }
+    
+    .modal-close {
+        top: 1rem;
+        right: 1rem;
+        width: 36px;
+        height: 36px;
     }
     
     .form-group label {
