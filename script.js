@@ -29,14 +29,14 @@ function createBackgroundEffects() {
         'M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'
     ];
 
-    const blurLevels = ['blur-light', 'blur-medium', 'blur-heavy', ''];
-    
-    for (let i = 0; i < 15; i++) {
+    // Criar ícones com diferentes profundidades (mais pertos = mais embaçados, maiores)
+    // Ícones próximos (mais embaçados e maiores)
+    for (let i = 0; i < 8; i++) {
         const iconContainer = document.createElement('div');
-        iconContainer.className = `bg-icon ${blurLevels[Math.floor(Math.random() * blurLevels.length)]}`;
+        iconContainer.className = 'bg-icon blur-heavy';
         
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        const size = 40 + Math.random() * 80;
+        const size = 80 + Math.random() * 60; // Maiores
         svg.setAttribute('width', size);
         svg.setAttribute('height', size);
         svg.setAttribute('viewBox', '0 0 24 24');
@@ -56,15 +56,59 @@ function createBackgroundEffects() {
         
         bgEffects.appendChild(iconContainer);
     }
-
-    // Create light beams
-    for (let i = 0; i < 8; i++) {
-        const beam = document.createElement('div');
-        beam.className = 'light-beam';
-        beam.style.left = `${Math.random() * 100}%`;
-        beam.style.animationDelay = `${Math.random() * 10}s`;
-        beam.style.animationDuration = `${10 + Math.random() * 5}s`;
-        bgEffects.appendChild(beam);
+    
+    // Ícones médios (blur médio)
+    for (let i = 0; i < 10; i++) {
+        const iconContainer = document.createElement('div');
+        iconContainer.className = 'bg-icon blur-medium';
+        
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        const size = 50 + Math.random() * 50;
+        svg.setAttribute('width', size);
+        svg.setAttribute('height', size);
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('stroke-width', '1.5');
+        
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', icons[Math.floor(Math.random() * icons.length)]);
+        svg.appendChild(path);
+        
+        iconContainer.appendChild(svg);
+        iconContainer.style.left = `${Math.random() * 100}%`;
+        iconContainer.style.top = `${Math.random() * 100}%`;
+        iconContainer.style.animationDelay = `${Math.random() * 20}s`;
+        iconContainer.style.animationDuration = `${20 + Math.random() * 10}s`;
+        
+        bgEffects.appendChild(iconContainer);
+    }
+    
+    // Ícones distantes (menos embaçados e menores)
+    for (let i = 0; i < 12; i++) {
+        const iconContainer = document.createElement('div');
+        iconContainer.className = 'bg-icon blur-light';
+        
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        const size = 30 + Math.random() * 40; // Menores
+        svg.setAttribute('width', size);
+        svg.setAttribute('height', size);
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('stroke-width', '1.5');
+        
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', icons[Math.floor(Math.random() * icons.length)]);
+        svg.appendChild(path);
+        
+        iconContainer.appendChild(svg);
+        iconContainer.style.left = `${Math.random() * 100}%`;
+        iconContainer.style.top = `${Math.random() * 100}%`;
+        iconContainer.style.animationDelay = `${Math.random() * 20}s`;
+        iconContainer.style.animationDuration = `${20 + Math.random() * 10}s`;
+        
+        bgEffects.appendChild(iconContainer);
     }
 
     // Create glowing orbs

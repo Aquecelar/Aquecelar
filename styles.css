@@ -215,18 +215,18 @@ body {
 }
 
 .bg-icon.blur-light {
-    filter: blur(2px);
-    opacity: 0.05;
+    filter: blur(1px);
+    opacity: 0.06;
 }
 
 .bg-icon.blur-medium {
-    filter: blur(5px);
-    opacity: 0.04;
+    filter: blur(4px);
+    opacity: 0.05;
 }
 
 .bg-icon.blur-heavy {
-    filter: blur(10px);
-    opacity: 0.02;
+    filter: blur(12px);
+    opacity: 0.08;
 }
 
 @keyframes float-rotate {
@@ -238,29 +238,6 @@ body {
     }
 }
 
-/* Light Beams */
-.light-beam {
-    position: absolute;
-    width: 2px;
-    height: 200px;
-    background: linear-gradient(to bottom, transparent, var(--color-accent-primary), transparent);
-    opacity: 0.1;
-    animation: beam-move 10s infinite ease-in-out;
-}
-
-@keyframes beam-move {
-    0% {
-        transform: translateY(-100%) translateX(0);
-        opacity: 0;
-    }
-    50% {
-        opacity: 0.15;
-    }
-    100% {
-        transform: translateY(100vh) translateX(50px);
-        opacity: 0;
-    }
-}
 
 /* Glowing Orbs */
 .glow-orb {
@@ -2708,10 +2685,11 @@ body:not(.light-theme) .testimonials .section-description {
         border-radius: 50% !important;
         padding: 0 !important;
         justify-content: center;
-        z-index: 998 !important;
+        z-index: 1002 !important;
         display: flex !important;
         background: var(--color-bg-secondary) !important;
         border: 1px solid var(--color-border) !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
     }
     
     .faq-fixed-btn span {
@@ -2724,18 +2702,23 @@ body:not(.light-theme) .testimonials .section-description {
     
     .floating-menu {
         right: 1rem;
-        bottom: 8rem;
-        z-index: 999;
+        bottom: 6rem;
+        z-index: 1004;
     }
     
     .floating-menu-toggle {
         width: 50px;
         height: 50px;
+        z-index: 1004 !important;
+        position: relative;
+        pointer-events: auto !important;
+        cursor: pointer !important;
     }
     
     .floating-menu-item {
         width: 50px;
         height: 50px;
+        pointer-events: auto !important;
     }
     
     .floating-menu.active .floating-menu-item:nth-child(1) {
@@ -2757,6 +2740,7 @@ body:not(.light-theme) .testimonials .section-description {
         left: 0.5rem;
         max-width: calc(100vw - 1rem);
         padding: 1.5rem;
+        z-index: 1003 !important;
     }
     
     .faq-dropdown.active {
@@ -2906,18 +2890,24 @@ body:not(.light-theme) .testimonials .section-description {
     }
     
     .floating-menu {
-        bottom: 1.5rem;
+        bottom: 6rem;
         right: 1rem;
+        z-index: 1004;
     }
     
     .floating-menu-toggle {
         width: 50px;
         height: 50px;
+        z-index: 1004 !important;
+        position: relative;
+        pointer-events: auto !important;
+        cursor: pointer !important;
     }
     
     .floating-menu-item {
         width: 42px;
         height: 42px;
+        pointer-events: auto !important;
     }
     
     .floating-menu.active .floating-menu-item:nth-child(1) {
@@ -2926,6 +2916,10 @@ body:not(.light-theme) .testimonials .section-description {
     
     .floating-menu.active .floating-menu-item:nth-child(2) {
         bottom: 70px;
+    }
+    
+    .faq-fixed-btn {
+        z-index: 1002 !important;
     }
     
     .modal-content {
